@@ -15,10 +15,12 @@ refs.destroyBtn.addEventListener('click', destroyBoxes)
 
 
 function createBoxes(){
-  for (let i=0; i<refs.input.value; i+=1){
+  if (refs.container.innerHTML==='') {
+    for (let i=0; i<refs.input.value; i+=1){
     boxes.push(`<div style="background-color:${getRandomHexColor()}; width:${startWidth+i*10}px; height:${startHeight+i*10}px"></div>`)
-  }
+    }
   refs.container.insertAdjacentHTML('beforeend',boxes.join(''))
+  }
 }
 
 function destroyBoxes() {
