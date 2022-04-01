@@ -17,9 +17,16 @@ refs.destroyBtn.addEventListener('click', destroyBoxes)
 function createBoxes(){
   if (refs.container.innerHTML==='') {
     for (let i=0; i<refs.input.value; i+=1){
-    boxes.push(`<div style="background-color:${getRandomHexColor()}; width:${startWidth+i*10}px; height:${startHeight+i*10}px"></div>`)
+    boxes.push(`<div style="background-color:${getRandomHexColor()}; width:${startWidth+i*10}px; height:${startHeight+i*10}px"></div>`);
     }
-  refs.container.insertAdjacentHTML('beforeend',boxes.join(''))
+  refs.container.insertAdjacentHTML('beforeend',boxes.join(''));
+  } else {
+    boxes.length=0;
+    for (let i=refs.container.querySelectorAll('div').length;i<(refs.container.querySelectorAll('div').length+(+refs.input.value));i+=1){
+      boxes.push(`<div style="background-color:${getRandomHexColor()}; width:${startWidth+i*10}px; height:${startHeight+i*10}px"></div>`);
+    }
+    refs.container.insertAdjacentHTML('beforeend',boxes.join(''));
+    
   }
 }
 
